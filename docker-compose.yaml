@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: torii-frontend
     working_dir: /app
-    command: ["./scripts/wait-for-it.sh", GATSBY_BACKEND_URL, "--", "./scripts/entrypoint.sh"]
+    command: ["./scripts/wait-for-it.sh", "0.0.0.0:1337", "--", "./scripts/entrypoint.sh"]
     env_file: .env
     environment:
       GATSBY_BACKEND_URL: ${GATSBY_BACKEND_URL}
