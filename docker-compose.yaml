@@ -29,5 +29,6 @@ services:
       NODE_ENV: development
     volumes:
       - ./backend:/app
+      - ./filesystem:/filesystem
     ports:
       - '1337:1337'
