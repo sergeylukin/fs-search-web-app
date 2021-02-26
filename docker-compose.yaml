@@ -1,0 +1,33 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: torii-frontend
+    working_dir: /app
+    command: ["./scripts/wait-for-it.sh", ${GATSBY_BACKEND_URL}, "--", "./scripts/entrypoint.sh"]
+    env_file: .env
+    environment:
+      GATSBY_BACKEND_URL: ${GATSBY_BACKEND_URL}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: torii-backend
+    working_dir: /app
+    entrypoint: "./entrypoint.sh"
+    env_file: .env
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./backend:/app
+    ports:
+      - '1337:1337'
