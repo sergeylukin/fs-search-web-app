@@ -1,0 +1,14 @@
+{
+  "name": "torii-backend",
+  "version": "0.1.0",
+  "description": "FS search backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergey Lukin <contact@sergeylukin.com> (http://sergeylukin.com)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
