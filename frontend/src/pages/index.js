@@ -91,6 +91,7 @@ const IndexPage = ({ data }) => {
               <>
                 <p>Yay, found following files by your request:</p>
                 {results.map((item, index) => {
+                  if (!item) return
                   return (
                     <Grid
                       gap={0}
