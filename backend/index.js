@@ -15,14 +15,13 @@ app.get('/', (req, res) => {
 app.get('/search', (req, res) => {
    const searchQuery = req.query._q
    glob('/filesystem/' + searchQuery, {}, (err, files) => {
-       if (files.length === 0) {
-         res.status(404)
-       } else {
-         files.forEach((val, index) => {
-           files[index] = files[index].replace(`/filesystem`, ``)
-         })
-       }
-       res.send({data: files})
+     const data = {
+       data: []
+     }
+     if (files.length > 0) {
+       data.data[] = files.map((file) => file.replace(`/filesystem`, ``))
+     }
+     res.send(data)
    })
 });
 
